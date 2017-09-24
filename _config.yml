@@ -1,7 +1,7 @@
 #
 # This file contains configuration flags to customize your site
 #
-
+<center>
 # Name of your site (displayed in the header)
 name: Matt Muras
 
@@ -12,6 +12,7 @@ description: Automate-Infrastructure
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: https://avatars0.githubusercontent.com/u/31595758?v=4&s=460
 
+</center>
 #
 # Flags below are optional
 #
