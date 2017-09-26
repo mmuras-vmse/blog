@@ -1,0 +1,32 @@
+
+C:\Users\matthew.muras>cd git
+
+C:\Users\matthew.muras\Git>dir
+ Volume in drive C is OSDisk
+ Volume Serial Number is 7007-D599
+
+ Directory of C:\Users\matthew.muras\Git
+
+09/26/2017  12:33 AM    <DIR>          .
+09/26/2017  12:33 AM    <DIR>          ..
+09/26/2017  12:33 AM    <DIR>          mmuras-vmse
+09/26/2017  12:12 AM    <DIR>          mmuras-vmse.github.io
+               0 File(s)              0 bytes
+               4 Dir(s)  23,388,278,784 bytes free
+
+C:\Users\matthew.muras\Git>cd mmuras-vmse.github.io
+
+C:\Users\matthew.muras\Git\mmuras-vmse.github.io>git pull https://github.com/mmuras-vmse/mmuras-vmse.github.io.git
+From https://github.com/mmuras-vmse/mmuras-vmse.github.io
+ * branch            HEAD       -> FETCH_HEAD
+Already up-to-date.
+
+C:\Users\matthew.muras\Git\mmuras-vmse.github.io>git push https://github.com/mmu
+ras-vmse/mmuras-vmse.github.io.git
+fatal: The current branch master has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream https://github.com/mmuras-vmse/mmuras-vmse.github.io.git master
+
+
+C:\Users\matthew.muras\Git\mmuras-vmse.github.io>
