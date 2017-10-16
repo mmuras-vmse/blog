@@ -11,8 +11,13 @@ The goal of this part of the project: Install ESXi on HPE hardware using some au
 
 Show me the outline:
 
--What we need:
+---
+What we need:
+Pick an Operating System: Windows Server 2012 R2
+PXE Boot System: TFTP32 (or 64-bit)
+---
 
+<<<<<<< HEAD
 1. Pick an Operating Systems – Windows Server 2012 R2
 2. PXE Boot System? – TFTP32 (or 64-bit)
 3. DHCP Serer? TFTP32 (or 64-bit) handles that also
@@ -23,3 +28,4 @@ Show me the outline:
 NOTE: Most physical VMware hosts in my environment will be HPE Proliant G9 (1U-Pizza-box)
 
 So what now?
+
