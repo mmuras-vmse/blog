@@ -13,8 +13,8 @@ Show me the outline:
 
 -What we need:
 
---1. Pick an Operating Systems – Windows Server 2012 R2
---2. PXE Boot System? – TFTP32 (or 64-bit)
+#. Pick an Operating Systems – Windows Server 2012 R2
+#. PXE Boot System? – TFTP32 (or 64-bit)
 -----a. TFTP Server service 
 -----b. DHCP Server service 
 --3. Get Linux boot file - gPXElinux.0 – Get this from a special download site
