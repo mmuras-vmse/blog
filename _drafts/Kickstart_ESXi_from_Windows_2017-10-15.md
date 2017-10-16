@@ -17,7 +17,8 @@ The goal of this part of the project: Install ESXi on HPE hardware using some au
 4. DHCP Serer? TFTP32 (or 64-bit) handles that also
 5. Get Linux boot file - gPXElinux.0 – Get this from a special download site
 6. Select how to present Kickstart file (and possibly other files) – NFS
-7. Select flavor of ESXi – I chose HPE ESXi 6.0 Update 2 
+7. Build Kickstart script file - Get basic examples and modify
+8. Select flavor of ESXi – I chose HPE ESXi 6.0 Update 2 
 
 
 NOTE: Most physical VMware hosts in my environment will be HPE Proliant G9 (1U-Pizza-box)
@@ -38,9 +39,12 @@ So what now?
 
 6. For NFS (my choice) to present the ks (kickstart file), I chose NFS because: a. Windows Server 2012 R2 has the NFS Server as a Native Service AND b. because I may need it for another ISO and kickstart later on
 
-7. Download HPE OEM ESXi from VMware (or chose some other reliable source)...translation: Vendor Download page?
+7. VMware provides some nice ks (kickstart file) examples and ground work here on [KB-X234](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2004582).  
+!--BOUNS--! For more ks (kickstart file) look at this [website by William Lam for examples](http://www.virtuallyghetto.com/2014/10/how-to-automate-vm-deployment-from-large-usb-keys-using-esxi-kickstart.html)
 
-### Jumping into the mess
+8. Download HPE OEM ESXi from VMware (or chose some other reliable source)...translation: Vendor Download page?
+
+### Jumping into the mess at TFTP32 / TFTP64 utility
 
 From this point, I am assuming you have built your Windows 2012 R2 VM, and you have downloaded all necessary docs and software.
 
@@ -63,4 +67,15 @@ For the TFTP64 Settings > TFTP tab:
 For the TFTP64 Settings > DHCP tab:
 
 ![alt text](http://mmuras-vmse.github.io/images/2017-10-15_kickstart/TFTP-Settings-DHCP_noIP.png "DHCP tab")
+
+### Unpacking gPXELinux.0 file
+
+    This is a direct picture from VMware's docs that I called out earlier.  I also added the pointer to the Syslinux location. 
+
+    You definitely need to unzip which ever package you choose, and most importantly you need the `gPXELinux.0` file.  
+
+    NOTE: You may also end up needing other files if you do more customizations, so its a good package to have sitting around somewhere handy.
+
+   ![alt text](http://mmuras-vmse.github.io/images/2017-10-15_kickstart/Get-PXELinux0-file-2.png "Global tab")
+
 
