@@ -11,14 +11,33 @@ The goal of this part of the project: Install ESXi on HPE hardware using some au
 
 Show me the outline:
 
-1. Pick an Operating Systems – Windows Server 2012 R2
-2. PXE Boot System? – TFTP32 (or 64-bit)
-3. DHCP Serer? TFTP32 (or 64-bit) handles that also
-4. Get Linux boot file - gPXElinux.0 – Get this from a special download site
-5. Select how to present Kickstart file (and possibly other files) – NFS
-6. Select flavor of ESXi – I chose HPE ESXi 6.0 Update 2 
+1. Copy of VMware instructions on Building a Kickstart server
+2. Pick an Operating Systems – Windows Server 2012 R2
+3. PXE Boot System? – TFTP32 (or 64-bit)
+4. DHCP Serer? TFTP32 (or 64-bit) handles that also
+5. Get Linux boot file - gPXElinux.0 – Get this from a special download site
+6. Select how to present Kickstart file (and possibly other files) – NFS
+7. Select flavor of ESXi – I chose HPE ESXi 6.0 Update 2 
+
 
 NOTE: Most physical VMware hosts in my environment will be HPE Proliant G9 (1U-Pizza-box)
 
 So what now?
+
+Well... first things first, lets go get our items on the grocery list from above.
+
+1. !--GOLD MINE--! [VMware's documentation on building a kickstart system](https://www.vmware.com/content/dam/digitalmarketing/vmware/en/pdf/techpaper/vsphere-esxi-vcenter-server-60-pxe-boot-esxi.pdf) is really well done, but it requires a very careful and close read.  Specifically it calls out the exact directory I listed above.  Essentially, this document will walk you through a Linux kickstart if you are an everyday Linux user.  Lucky for me, I have used it enough Linux from a previous life somewhere to be able to stumble and fumble my way through it. 
+
+2. Build Windows Server 2012 R2 VM - I will not be going into the details of this any further.
+
+3. Get [TFTP32 from here](http://tftpd32.jounin.net/tftpd32_download.html) - I am using the 64-bit version.
+
+4. Oh wait, (smack!) TFTP (mentioned in 3 above) will take care of both TFTP and DHCP (and give you the platform for PXE booting)
+
+5. Get [pxelinux.0 file from here] (https://www.kernel.org/pub/linux/utils/boot/syslinux/Testing/3.86/) I have also read other peoples notes that say versions later than Syslinux 3.86 will be problematic.  VMware's docs (see 1 above) calls out Syslinux 3.86.
+
+6. For NFS (my choice) to present the ks (kickstart file), I chose NFS because: a. Windows Server 2012 R2 has the NFS Server as a Native Service AND b. because I may need it for another ISO and kickstart later on
+
+7. Download HPE OEM ESXi from VMware (or chose some other reliable source)...translation: Vendor Download page?
+
 
