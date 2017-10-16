@@ -50,15 +50,15 @@ For the TFTP64 Settings > Global tab:
 2. Enable DHCP Server
 3. All other services are optional
 
-!(image-URL.png)
+![alt text](http://mmuras-vmse.github.io/images/2017-10-15_kickstart/TFTP-Settings-Global.png "Global tab")
 
 For the TFTP64 Settings > TFTP tab:
 
 1. Set your Base Directory
 2. TFTP Security - (your milage may vary) best rule of thumb - set to None and increase and test it as you increase it to make sure system is functioning properly.
-3. Advanced TFTP Options -> Uncheck option 1, check option 2 - 6.  NOTE: I consider "PXE Compatibility" option 2.  I consider 
+3. Advanced TFTP Options -> Uncheck option 1, check option 2 - 6.  NOTE: I consider "PXE Compatibility" option 2.  (see picture)
 
-!(image-URL.png)
+![alt text](http://mmuras-vmse.github.io/images/2017-10-15_kickstart/TFTP-Settings-TFTP_noIP.png "TFTP tab")
 
 For the TFTP64 Settings > DHCP tab:
 
