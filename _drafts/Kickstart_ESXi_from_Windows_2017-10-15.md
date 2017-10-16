@@ -9,7 +9,7 @@ However, for me and most of my colleagues on my team at work there would be a st
 
 The goal of this part of the project: Install ESXi on HPE hardware using some automated method.  This is a simple goal in form but a very loaded statement.  I tried VMware AutoDeploy and had a certain amount of success with that product.  However, in my opinion, there is a lot of “scaffolding” to make AutoDeploy work the way it is intended.  This is less than desirable in my environment for various reasons.  Kickstart on Windows, it might sound more complicated than it actually is.  
 
-Show me the outline:
+### Show me the outline:
 
 1. Copy of VMware instructions on Building a Kickstart server
 2. Pick an Operating Systems – Windows Server 2012 R2
@@ -24,9 +24,9 @@ NOTE: Most physical VMware hosts in my environment will be HPE Proliant G9 (1U-P
 
 So what now?
 
-Well... first things first, lets go get our items on the grocery list from above.
+### Well... first things first, lets go get our items on the grocery list from above.
 
-1. !--GOLD MINE--! [VMware's documentation on building a kickstart system](https://www.vmware.com/content/dam/digitalmarketing/vmware/en/pdf/techpaper/vsphere-esxi-vcenter-server-60-pxe-boot-esxi.pdf) is really well done, but it requires a very careful and close read.  Specifically it calls out the exact directory I listed above.  Essentially, this document will walk you through a Linux kickstart if you are an everyday Linux user.  Lucky for me, I have used it enough Linux from a previous life somewhere to be able to stumble and fumble my way through it. 
+1. !--GOLD MINE--! [VMware's documentation on building a kickstart system](https://www.vmware.com/content/dam/digitalmarketing/vmware/en/pdf/techpaper/vsphere-esxi-vcenter-server-60-pxe-boot-esxi.pdf) is really well done, but it requires a very careful and close read.  Essentially, this document will walk you through a Linux kickstart if you are an everyday Linux user.  Lucky for me, I have used it enough Linux from a previous life somewhere to be able to stumble and fumble my way through it. 
 
 2. Build Windows Server 2012 R2 VM - I will not be going into the details of this any further.
 
@@ -40,4 +40,27 @@ Well... first things first, lets go get our items on the grocery list from above
 
 7. Download HPE OEM ESXi from VMware (or chose some other reliable source)...translation: Vendor Download page?
 
+### Jumping into the mess
+
+From this point, I am assuming you have built your Windows 2012 R2 VM, and you have downloaded all necessary docs and software.
+
+For the TFTP64 Settings > Global tab:
+
+1. Enable TFTP Server
+2. Enable DHCP Server
+3. All other services are optional
+
+!(image-URL.png)
+
+For the TFTP64 Settings > TFTP tab:
+
+1. Set your Base Directory
+2. TFTP Security - (your milage may vary) best rule of thumb - set to None and increase and test it as you increase it to make sure system is functioning properly.
+3. Advanced TFTP Options -> Uncheck option 1, check option 2 - 6.  NOTE: I consider "PXE Compatibility" option 2.  I consider 
+
+!(image-URL.png)
+
+For the TFTP64 Settings > DHCP tab:
+
+!(image-URL.png)
 
