@@ -13,10 +13,8 @@ Show me the outline:
 
 -What we need:
 
---1. Pick an Operating Systems – Windows Server 2012 R2
---2. PXE Boot System? – TFTP32 (or 64-bit)
------a. TFTP Server service 
------b. DHCP Server service 
---3. Get Linux boot file - gPXElinux.0 – Get this from a special download site
---4. Select how to present Kickstart file (and possibly other files) – NFS
---5. Select flavor of ESXi – I chose HPE ESXi 6.0 Update 2 – Most physical VMware hosts in my environment will be HPE Proliant G9 (1U-Pizza-box)
+#. Pick an Operating Systems – Windows Server 2012 R2
+#. PXE Boot System? – TFTP32 (or 64-bit) for PXE and DHCP
+#. Get Linux boot file - gPXElinux.0 – Get this from a special download site
+#. Select how to present Kickstart file (and possibly other files) – NFS
+#. Select flavor of ESXi – I chose HPE ESXi 6.0 Update 2 – Most physical VMware hosts in my environment will be HPE Proliant G9 (1U-Pizza-box)
