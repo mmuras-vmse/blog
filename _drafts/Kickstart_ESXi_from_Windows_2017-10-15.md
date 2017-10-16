@@ -62,5 +62,5 @@ For the TFTP64 Settings > TFTP tab:
 
 For the TFTP64 Settings > DHCP tab:
 
-!(image-URL.png)
+!(http://mmuras-vmse.github.io/images/2017-10-15_kickstart/TFTP-Settings-DHCP_noIP.png)
 
