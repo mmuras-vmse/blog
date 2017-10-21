@@ -1,7 +1,9 @@
 ---
 layout: post
-title: Kickstart ESXi from Windows Server 2012
+title:  Kickstart ESXi from Windows Server 2012
 ---
+
+2017-10-Xx
 
 A Kickstart is just a method used to boot an ISO from some form of media.  In my reading about Kickstart systems the main thing that keeps being repeated is, do all this in Linux.  Take this version of Linux (usually Red Hat or CentOS) and build this Kickstart server.  Let me say this right now, I relish the idea of running a Linux system to do this sort of task.  
 
