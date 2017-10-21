@@ -11,3 +11,5 @@ title:  Kickstart ESXi from Windows Server 2012
 
     test code
     splatblog
+
+!test.png
