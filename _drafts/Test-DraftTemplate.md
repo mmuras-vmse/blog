@@ -13,3 +13,5 @@ title:  Kickstart ESXi from Windows Server 2012
     splatblog
 
 ![alt text](test.png)
+
+test this
