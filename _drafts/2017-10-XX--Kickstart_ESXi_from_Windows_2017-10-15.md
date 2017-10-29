@@ -82,7 +82,7 @@ NOTE: You may also end up needing other files if you do more customizations, so 
 The screen shot from the VMware document (above) goes into some detail about where to place the gpxelinux.0 file .  However, for a little more 
 clarity on my system this is how it looks...
 
-![alt text](http://mmuras-vmse.github.io/images/2017-10-15_kickstart/Path_for_gpxeinux.0.png "Placing the gpxelinux.0 file")
+![alt text](http://mmuras-vmse.github.io/images/2017-10-15_kickstart/Path_for_gpxelinux.0.png "Placing the gpxelinux.0 file")
 
 This directory contains 3 different types of items:
 

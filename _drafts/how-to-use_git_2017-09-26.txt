@@ -21,8 +21,7 @@ From https://github.com/mmuras-vmse/mmuras-vmse.github.io
  * branch            HEAD       -> FETCH_HEAD
 Already up-to-date.
 
-C:\Users\matthew.muras\Git\mmuras-vmse.github.io>git push https://github.com/mmu
-ras-vmse/mmuras-vmse.github.io.git
+C:\Users\matthew.muras\Git\mmuras-vmse.github.io>git push https://github.com/mmuras-vmse/mmuras-vmse.github.io.git
 fatal: The current branch master has no upstream branch.
 To push the current branch and set the remote as upstream, use
 
