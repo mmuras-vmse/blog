@@ -73,10 +73,19 @@ For the TFTP64 Settings > DHCP tab:
 ### Unpacking gPXELinux.0 file
 This is a direct picture from VMware's docs that I called out earlier.  I also added the pointer to the Syslinux location. 
 
-You definitely need to unzip which ever package you choose, and most importantly you need the `gPXELinux.0` file.  
+You definitely need to unzip which ever package you choose, and most importantly you need the gPXELinux.0 file.  
 
 NOTE: You may also end up needing other files if you do more customizations, so its a good package to have sitting around somewhere handy.
 
 ![alt text](http://mmuras-vmse.github.io/images/2017-10-15_kickstart/Get-PXELinux0-file-2.png "Global tab")
 
+The screen shot from the VMware document (above) goes into some detail about where to place the gpxelinux.0 file .  However, for a little more 
+clarity on my system this is how it looks...
 
+![alt text](http://mmuras-vmse.github.io/images/2017-10-15_kickstart/Path_for_gpxeinux.0.png "Placing the gpxelinux.0 file")
+
+This directory contains 3 different types of items:
+
+    a. gpxelinux.0 file
+    b. pxelinux.cfg directory
+    c. ISO File directory 
