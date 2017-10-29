@@ -1,7 +1,9 @@
 ---
 layout: post
-title: Kickstart ESXi from Windows Server 2012
+title:  Kickstart ESXi from Windows Server 2012
 ---
+
+2017-10-Xx
 
 A Kickstart is just a method used to boot an ISO from some form of media.  In my reading about Kickstart systems the main thing that keeps being repeated is, do all this in Linux.  Take this version of Linux (usually Red Hat or CentOS) and build this Kickstart server.  Let me say this right now, I relish the idea of running a Linux system to do this sort of task.  
 
@@ -35,7 +37,7 @@ So what now?
 
 4. Oh wait, (smack!) TFTP (mentioned in 3 above) will take care of both TFTP and DHCP (and give you the platform for PXE booting)
 
-5. Get [pxelinux.0 file from here] (https://www.kernel.org/pub/linux/utils/boot/syslinux/Testing/3.86/) I have also read other peoples notes that say versions later than Syslinux 3.86 will be problematic.  VMware's docs (see 1 above) calls out Syslinux 3.86.
+5. Get pxelinux.0 [pxelinux file from here](https://www.kernel.org/pub/linux/utils/boot/syslinux/Testing/3.86/) I have also read other peoples notes that say versions later than Syslinux 3.86 will be problematic.  VMware's docs (see 1 above) calls out Syslinux 3.86.
 
 6. For NFS (my choice) to present the ks (kickstart file), I chose NFS because: a. Windows Server 2012 R2 has the NFS Server as a Native Service AND b. because I may need it for another ISO and kickstart later on
 
