@@ -40,6 +40,7 @@ So what now?
 5. Get pxelinux.0 [pxelinux file from here](https://www.kernel.org/pub/linux/utils/boot/syslinux/Testing/3.86/) I have also read other peoples notes that say versions later than Syslinux 3.86 will be problematic.  VMware's docs (see 1 above) calls out Syslinux 3.86.
 
 6. For NFS (my choice) to present the ks (kickstart file), I chose NFS because: a. Windows Server 2012 R2 has the NFS Server as a Native Service AND b. because I may need it for another ISO and kickstart later on
+!--BONUS--! Here is a pretty straight forward look at how to do setup NFS on Windows 2012 by [Shane Rainville](http://www.serverlab.ca/tutorials/windows/storage-file-systems/configuring-an-nfs-server-on-windows-server-2012-r2/)
 
 7. VMware provides some nice ks (kickstart file) examples and ground work here on [KB-X234](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2004582).  
 !--BOUNS--! For more ks (kickstart file) look at this [website by William Lam for examples](http://www.virtuallyghetto.com/2014/10/how-to-automate-vm-deployment-from-large-usb-keys-using-esxi-kickstart.html)
@@ -86,6 +87,18 @@ clarity on my system this is how it looks...
 
 This directory contains 3 different types of items:
 
-    a. gpxelinux.0 file
-    b. pxelinux.cfg directory
-    c. ISO File directory 
+  a. gpxelinux.0 file
+  b. pxelinux.cfg directory
+  c. ISO File directory 
+
+### Configure NFS on Windows Server 2012
+Setup NFS on Windows 2012 by [Shane Rainville](http://www.serverlab.ca/tutorials/windows/storage-file-systems/configuring-an-nfs-server-on-windows-server-2012-r2/)
+
+This is basically handled in two (or three) sections...depending on how you look at this.
+
+  a. Install Services for NFS
+  b. Configure the NFS Share (where clients will connect to)
+
+The biggest Stumbling block for me when working with NFS, was getting the sharing to behave as I wanted.
+
+![alt text](http://mmuras-vmse.github.io/images/2017-10-15_kickstart/NFS_Advanced_Sharing.png "NFS Sharing for the Kickstart file directory")
