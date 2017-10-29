@@ -135,7 +135,58 @@ when using other Automation processes.
     stampFile = open('/finished.stamp', mode='w')
     stampFile.write( time.asctime() )
 
-Just go take a look at what this [website by William Lam](http://www.virtuallyghetto.com/2014/10/how-to-automate-vm-deployment-from-large-usb-keys-using-esxi-kickstart.html) has for Kickstart examples.
+If you have not looked at William Lam's website before, he is a great resource as VMware community member and usually has excellent content.  Take a look at what this [website by William Lam](http://www.virtuallyghetto.com/2014/10/how-to-automate-vm-deployment-from-large-usb-keys-using-esxi-kickstart.html) has for Kickstart examples.
 
 The official VMware website [KB-2004582](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2004582) has some wonderful info as well.  Specifically, they can tell you what are all the flags you can set.
+
+### Copy VMware ISO to correct folder
+
+Once you get your prefered VMware ISO downloaded, place the ISO folder (with contents) in the TFTP_Root or somewhere else where it will be accessible during the PXE Boot process.
+
+I listed my organization above, but the ISO can actually be in a few different places.
+
+You will likely start off with a file named "default" like this in your "..\tftp_root\pxelinux.cfg" directory.
+
+NOTE: the file "default" has no file extension.
+
+    default menu.c32
+    menu title ESX Boot Menu
+    timeout 400
+
+    ##PXE boot the installer and perform a scripted installation with
+    ##local or remote media (RPM files), as specified in the installation script
+
+    label scripted
+    menu label 1 - ESXi Scripted Installation for HPE G9s
+    KERNEL ESXi-6.0.0-Update2-3620759-HPE/mboot.c32
+    APPEND -c ESXi-6.0.0-Update2-3620759-HPE/boot.cfg
+
+    label hddboot
+    LOCALBOOT 0x80
+    MENU LABEL 0 - Boot from LOCAL DISK
+
+The last file that you will want to update is "boot.cfg" located at "..\tftp_root\ESXi-Install-ISO" directory.  The file will actually show something that looks a little different, 
+
+    a. Each file listed will look like this "/tboot.b00" or "/b.b00"
+    b. kernelopt line will be default
+
+So you have 2 things to do here:
+
+1. Remove the leading "/" charecter on each file name (easy with notepad.exe) with a quick search and replace.  
+2. Set the kernelopt line to "kernelopt=ks=nfs://10.x.y.z/nfs_root/ks.cfg" or something similar
+
+    prefix=ESXi-6.0.0-Update2-3620759-HPE
+    bootstate=0
+
+    title=Loading ESXi installer
+
+    timeout=5
+
+    kernel=tboot.b00
+
+    kernelopt=ks=nfs://10.x.y.z/nfs_root/ks.cfg
+    modules=b.b00 --- jumpstrt.gz --- useropts.gz --- k.b00 --- chardevs.b00 --- a.b00 --- user.b00 --- uc_intel.b00 --- uc_amd.b00 --- sb.v00 --- s.v00 --- scsi_mpt.v00 --- net_tg3.v00 --- elxnet.v00 --- ima_be2i.v00 --- lpfc.v00 --- scsi_be2.v00 --- amshelpe.v00 --- conrep.v00 --- hpbootcf.v00 --- hpe_buil.v00 --- hpe_cru.v00 --- hpe_esxi.v00 --- hpe_ilo.v00 --- hpe_nmi.v00 --- hpe_smx_.v00 --- hponcfg.v00 --- hptestev.v00 --- scsi_hps.v00 --- ssacli.v00 --- scsi_hpd.v00 --- scsi_hpv.v00 --- intelcim.v00 --- net_i40e.v00 --- net_igb.v00 --- net_ixgb.v00 --- nmlx4_co.v00 --- nmlx4_en.v00 --- nmlx4_rd.v00 --- nmlx5_co.v00 --- qedentv.v00 --- ima_qla4.v00 --- misc_cni.v00 --- net_bnx2.v00 --- net_bnx2.v01 --- net_cnic.v00 --- net_nx_n.v00 --- net_qlcn.v00 --- qlnative.v00 --- scsi_bfa.v00 --- scsi_bnx.v00 --- scsi_bnx.v01 --- scsi_qla.v00 --- mtip32xx.v00 --- ata_pata.v00 --- ata_pata.v01 --- ata_pata.v02 --- ata_pata.v03 --- ata_pata.v04 --- ata_pata.v05 --- ata_pata.v06 --- ata_pata.v07 --- block_cc.v00 --- ehci_ehc.v00 --- emulex_e.v00 --- weaselin.t00 --- esx_dvfi.v00 --- esx_ui.v00 --- ipmi_ipm.v00 --- ipmi_ipm.v01 --- ipmi_ipm.v02 --- lsi_mr3.v00 --- lsi_msgp.v00 --- lsu_hp_h.v00 --- lsu_lsi_.v00 --- lsu_lsi_.v01 --- lsu_lsi_.v02 --- lsu_lsi_.v03 --- lsu_lsi_.v04 --- misc_dri.v00 --- net_e100.v00 --- net_e100.v01 --- net_enic.v00 --- net_forc.v00 --- net_mlx4.v00 --- net_mlx4.v01 --- net_vmxn.v00 --- nvme.v00 --- ohci_usb.v00 --- rste.v00 --- sata_ahc.v00 --- sata_ata.v00 --- sata_sat.v00 --- sata_sat.v01 --- sata_sat.v02 --- sata_sat.v03 --- sata_sat.v04 --- scsi_aac.v00 --- scsi_adp.v00 --- scsi_aic.v00 --- scsi_fni.v00 --- scsi_ips.v00 --- scsi_meg.v00 --- scsi_meg.v01 --- scsi_meg.v02 --- scsi_mpt.v01 --- scsi_mpt.v02 --- uhci_usb.v00 --- vsan.v00 --- vsanheal.v00 --- vsanmgmt.v00 --- xhci_xhc.v00 --- tools.t00 --- nmst.v00 --- xorg.v00 --- imgdb.tgz --- imgpayld.tgz
+    build=
+    updated=0
+
 
