@@ -7,7 +7,9 @@ title:  Kickstart ESXi from Windows Server 2012
 
 I work for a company and a team which recently started to deploy physical servers with VMware ESXi and VMs for production buids.  In the last year or so we built and deployed roughly 50 environments.  
 
-The company has a group of techs assigned to do the “pre-build” process: Configure HP iLO, Bios, Boot order, Raid Config, Install ESXi, Configure ESXi network, rack and wire server for VM build out.  I was pretty certain that there would be a large batch of documentation so the techs could turn a basic HPE server into a VMware ESXi platform we could use.  However, I was a little suprised when I saw that it took roughly 60 pages (with pictures).  I also was pretty certain that I could successfully Automate most of the tasks.
+The company has a group of techs assigned to do the “pre-build” process: Configure HP iLO, Bios, Boot order, Raid Config, Install ESXi, Configure ESXi network, rack and wire server for VM build out.  I was pretty certain that there would be a large batch of documentation so the techs could turn a basic HPE server into a VMware ESXi platform we could use.  However, I was a little suprised when I saw that it took roughly 60 pages (with pictures / screen shots). I also was pretty certain that I could successfully Automate most of the tasks.
+
+The first step in testing Automation for this environment was having a way to more effectively deploy ESXi.  The way we did this for years was by ISO on USB or by ISO from iLO virtual CD.  This is not a bad way to go if you have 5 or 10 servers.  However, this is not sustainable for us longterm.  
 
 A Kickstart is just a method used to boot an ISO from some form of media.  In my reading about Kickstart systems the main thing that keeps being repeated is, do all this in Linux.  Take this version of Linux (usually Red Hat or CentOS) and build this Kickstart server.  Let me say this right now, I relish the idea of running a Linux system to do this sort of task.  
 
