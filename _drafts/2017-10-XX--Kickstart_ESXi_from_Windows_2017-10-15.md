@@ -180,23 +180,7 @@ So you have 2 things to do here:
 
 1. Remove the leading "/" character on each file name (easy with notepad.exe) with a quick search and replace.  
 2. Set the kernelopt line to "kernelopt=ks=nfs://10.x.y.z/nfs_root/ks.cfg" or something similar
-
-    default menu.c32
-    menu title ESX Boot Menu
-    timeout 400
-
-    ##PXE boot the installer and perform a scripted installation with
-    ##local or remote media (RPM files), as specified in the installation script
-
-    label scripted
-    menu label 1 - ESXi Scripted Installation for HPE G9s
-    KERNEL ESXi-6.0.0-Update2-3620759-HPE/mboot.c32
-    APPEND -c ESXi-6.0.0-Update2-3620759-HPE/boot.cfg
-
-    label hddboot
-    LOCALBOOT 0x80
-    MENU LABEL 0 - Boot from LOCAL DISK
-
+    
 The last file that you will want to update is "boot.cfg" located at "..\tftp_root\ESXi-Install-ISO" directory.  The file will actually show something that looks a little different, 
 
     a. Each file listed will look like this "/tboot.b00" or "/b.b00"
