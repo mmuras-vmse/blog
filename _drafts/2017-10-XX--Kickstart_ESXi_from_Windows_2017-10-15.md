@@ -5,17 +5,17 @@ title:  Kickstart ESXi from Windows Server 2012
 
 2017-10-Xx
 
-I work for a company and a team which recently started to deploy physical servers with VMware ESXi and VMs for production buids.  In the last year or so we built and deployed roughly 50 environments.  
+I work for a company and a team which recently started to deploy physical servers with VMware ESXi and VMs for production builds.  In the last year or so we built and deployed roughly 50 environments.  
 
-The company has a group of techs assigned to do the “pre-build” process: Configure HP iLO, Bios, Boot order, Raid Config, Install ESXi, Configure ESXi network, rack and wire server for VM build out.  I was pretty certain that there would be a large batch of documentation so the techs could turn a basic HPE server into a VMware ESXi platform we could use.  However, I was a little suprised when I saw that it took roughly 60 pages (with pictures / screen shots). I also was pretty certain that I could successfully Automate most of the tasks.
+The company has a group of techs assigned to do the "pre-build" process: Configure HP iLO, Bios, Boot order, Raid Config, Install ESXi, Configure ESXi network, rack and wire server for VM build out.  I was pretty certain that there would be a large batch of documentation so the techs could turn a basic HPE server into a VMware ESXi platform we could use.  However, I was a little surprised when I saw that it took roughly 60 pages (with pictures/screen shots). I also was pretty certain that I could successfully Automate most of the tasks.
 
 The first step in testing Automation for this environment was having a way to more effectively deploy ESXi.  The way we did this for years was by ISO on USB or by ISO from iLO virtual CD.  This is not a bad way to go if you have 5 or 10 servers.  However, this is not sustainable for us longterm.  
 
 A Kickstart is just a method used to boot an ISO from some form of media.  In my reading about Kickstart systems the main thing that keeps being repeated is, do all this in Linux.  Take this version of Linux (usually Red Hat or CentOS) and build this Kickstart server.  Let me say this right now, I relish the idea of running a Linux system to do this sort of task.  
 
-However, for me and most of my colleagues on my team at work there would be a steeper learning curve with Linux.  I decided to take a different turn at the “Choose your OS” step.  I went with Windows Server 2012 R2.  I may still end up using a Linux Kickstart system for the related project.   
+However, for me and most of my colleagues on my team at work, there would be a steeper learning curve with Linux.  I decided to take a different turn at the "Choose your OS" step.  I went with Windows Server 2012 R2.  I may still end up using a Linux Kickstart system for the related project.   
 
-The goal of this part of the project: Install ESXi on HPE hardware using some automated method.  This is a simple goal in form but a very loaded statement.  I tried VMware AutoDeploy and had a certain amount of success with that product.  However, in my opinion, there is a lot of “scaffolding” to make AutoDeploy work the way it is intended.  This is less than desirable in my environment for various reasons.  Kickstart on Windows, it might sound more complicated than it actually is.  
+The goal of this part of the project: Install ESXi on HPE hardware using some automated method.  This is a simple goal in form but a very loaded statement.  I tried VMware AutoDeploy and had a certain amount of success with that product.  However, in my opinion, there is a lot of "scaffolding" to make AutoDeploy work the way it is intended.  This is less than desirable in my environment for various reasons.  Kickstart on Windows, it might sound more complicated than it actually is.  
 
 ### Show me the outline:
 
@@ -33,7 +33,7 @@ NOTE: Most physical VMware hosts in my environment will be HPE Proliant G9 (1U-P
 
 So what now?
 
-### Well... first things first, lets go get our items on the grocery list from above.
+### Well... first things first, let's go get our items on the grocery list from above.
 
 1. !--GOLD MINE--! [VMware's documentation on building a kickstart system](https://www.vmware.com/content/dam/digitalmarketing/vmware/en/pdf/techpaper/vsphere-esxi-vcenter-server-60-pxe-boot-esxi.pdf) is really well done, but it requires a very careful and close read.  Essentially, this document will walk you through a Linux kickstart if you are an everyday Linux user.  Lucky for me, I have used it enough Linux from a previous life somewhere to be able to stumble and fumble my way through it. 
 
@@ -46,9 +46,9 @@ So what now?
 5. Get pxelinux.0 [pxelinux file from here](https://www.kernel.org/pub/linux/utils/boot/syslinux/Testing/3.86/) I have also read other peoples notes that say versions later than Syslinux 3.86 will be problematic.  VMware's docs (see 1 above) calls out Syslinux 3.86.
 
 6. For NFS (my choice) to present the ks (kickstart file), I chose NFS because: a. Windows Server 2012 R2 has the NFS Server as a Native Service AND b. because I may need it for another ISO and kickstart later on
-!--BONUS--! Here is a pretty straight forward look at how to do setup NFS on Windows 2012 by [Shane Rainville](http://www.serverlab.ca/tutorials/windows/storage-file-systems/configuring-an-nfs-server-on-windows-server-2012-r2/)
+!--BONUS--! Here is a pretty straightforward look at how to do setup NFS on Windows 2012 by [Shane Rainville](http://www.serverlab.ca/tutorials/windows/storage-file-systems/configuring-an-nfs-server-on-windows-server-2012-r2/)
 
-7. VMware provides some nice ks (kickstart file) examples and ground work here on [KB-2004582](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2004582).  
+7. VMware provides some nice ks (kickstart file) examples and groundwork here on [KB-2004582](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2004582).  
 !--BOUNS--! For more ks (kickstart file) look at this [website by William Lam for examples](http://www.virtuallyghetto.com/2014/10/how-to-automate-vm-deployment-from-large-usb-keys-using-esxi-kickstart.html)
 
 8. Download HPE OEM ESXi from VMware (or chose some other reliable source)...translation: Vendor Download page?
@@ -82,11 +82,11 @@ This is a direct picture from VMware's docs that I called out earlier.  I also a
 
 You definitely need to unzip which ever package you choose, and most importantly you need the gPXELinux.0 file.  
 
-NOTE: You may also end up needing other files if you do more customizations, so its a good package to have sitting around somewhere handy.
+NOTE: You may also end up needing other files if you do more customizations, so it's a good package to have sitting around somewhere handy.
 
 ![alt text](http://mmuras-vmse.github.io/images/2017-10-15_kickstart/Get-PXELinux0-file-2.png "Global tab")
 
-The screen shot from the VMware document (above) goes into some detail about where to place the gpxelinux.0 file .  However, for a little more 
+The screen shot from the VMware document (above) goes into some detail about where to place the gpxelinux.0 file.  However, for a little more 
 clarity on my system this is how it looks...
 
 ![alt text](http://mmuras-vmse.github.io/images/2017-10-15_kickstart/Path_for_gpxelinux.0.png "Placing the gpxelinux.0 file")
@@ -113,7 +113,7 @@ The biggest "stumbling block" for me when working with NFS, was getting the shar
     b. Enabled unmapped user access
     c. Allow unmapped user Unix access (by UID/GID)
 
-For this, I am not sure if these settings are the best.  But I do know these settings work.  I am not claiming to be an expert on what is right or wrong about this from a security standpoint.  I recommend testing this in an environment (Vlan) not exposed to Internet Access.
+For this, I am not sure if these settings are the best.  But I do know these settings work.  I am not claiming to be an expert on what is right or wrong about this from a security standpoint.  I recommend testing this in an environment (VLAN) not exposed to Internet Access.
 
 ![alt text](http://mmuras-vmse.github.io/images/2017-10-15_kickstart/NFS_Advanced_Sharing.png "NFS Sharing for the Kickstart file directory")
 
@@ -147,13 +147,39 @@ The official VMware website [KB-2004582](https://kb.vmware.com/selfservice/micro
 
 ### Copy VMware ISO to correct folder
 
-Once you get your prefered VMware ISO downloaded, place the ISO folder (with contents) in the TFTP_Root or somewhere else where it will be accessible during the PXE Boot process.
+Once you get your preferred VMware ISO downloaded, place the ISO folder (with contents) in the TFTP_Root or somewhere else where it will be accessible during the PXE Boot process.
 
 I listed my organization above, but the ISO can actually be in a few different places.
 
 You will likely start off with a file named "default" like this in your "..\tftp_root\pxelinux.cfg" directory.
 
 NOTE: the file "default" has no file extension.
+
+    default menu.c32
+    menu title ESX Boot Menu
+    timeout 400
+
+    ##PXE boot the installer and perform a scripted installation with
+    ##local or remote media (RPM files), as specified in the installation script
+
+    label scripted
+    menu label 1 - ESXi Scripted Installation for HPE G9s
+    KERNEL ESXi-6.0.0-Update2-3620759-HPE/mboot.c32
+    APPEND -c ESXi-6.0.0-Update2-3620759-HPE/boot.cfg
+
+    label hddboot
+    LOCALBOOT 0x80
+    MENU LABEL 0 - Boot from LOCAL DISK
+
+The last file that you will want to update is "boot.cfg" located at "..\tftp_root\ESXi-Install-ISO" directory.  The file will actually show something that looks a little different, 
+
+    a. Each file listed will look like this "/tboot.b00" or "/b.b00"
+    b. kernelopt line will be default
+
+So you have 2 things to do here:
+
+1. Remove the leading "/" character on each file name (easy with notepad.exe) with a quick search and replace.  
+2. Set the kernelopt line to "kernelopt=ks=nfs://10.x.y.z/nfs_root/ks.cfg" or something similar
 
     default menu.c32
     menu title ESX Boot Menu
