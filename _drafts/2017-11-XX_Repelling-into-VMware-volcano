@@ -1,0 +1,12 @@
+---
+layout: post
+title:  Repelling into VMware Volcano - A brief history of my deployments
+---
+
+2017-10-30
+
+
+In the last year or so we built and deployed roughly 50 environments.  The company has a group of techs assigned to do the “pre-build” task/process: Configure HP iLO, Bios, Boot order, Raid Config, Install ESXi, Configure ESXi network, rack and wire server for VM build out.  
+One of my original assignments within this project, document all processes necessary to build the VMware environment.  Moreover, I had to pay special attention to making sure the documents for these techs was: 1. step-by-step and 2. had to be ordered so the techs could focus on the “task” as a whole item (and not shift the work back to Architect team) until ESXi host is ready.  I was pretty certain that there would be a large batch of documentation for the step-by-step task.  However, I was a little surprised when I saw that it took roughly 60 pages (with pictures / screen shots). I also was pretty certain that I could successfully automate most of the tasks.
+
+The first step in testing Automation for this environment was having a way to more effectively deploy ESXi.  The way we did this for years was by ISO on USB or by ISO from iLO virtual CD.  This is not a bad way to go if you have 5 or 10 servers.  However, this is not sustainable for us longterm.  
