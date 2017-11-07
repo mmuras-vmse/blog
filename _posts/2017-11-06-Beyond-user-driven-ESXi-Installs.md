@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Beyond user driven ESXi installs: Kickstart vs. AutoDeploy
+title:  2017-11-06-Beyond user driven ESXi installs - Kickstart vs. AutoDeploy
 ---
 
 2017-11-06
